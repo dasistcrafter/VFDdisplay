@@ -1,14 +1,13 @@
-import tkinter as tk
+from tkinter import *
+from volume1 import volume1Static
 
-root = tk.Tk()
-canvas =canvas()
+root = Tk()
 
-#setting up the window
-root.title("VFDdisplay")
-root.config(background="gray20")
-root.minsize(800,200)
-root.maxsize(800,1080)
-#root.geometry()
+C = Canvas(root, bg="gray55",height=200,width=800)
+
+volume1Static(C, root)
 
 
-root.mainloop()
+C.pack()
+mainloop()
+
