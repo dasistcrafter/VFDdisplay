@@ -18,9 +18,9 @@ def volume1Static():
    displayVUr = C.create_text(80, 76, text="L", fill="lightblue", font=("Arial", 16))
    displayVUl = C.create_text(80, 112, text="R", fill="lightblue", font=("Arial", 16))
 
-def volume1aktive():
-   #outburstL = LevelL * 5
-   outburstLvisual = C.create_rectangle(100,68,700,84, fill='lightblue')
+def volume1aktive(LevelL,LevelR):
+   outburstL = LevelL * 5
+   outburstLvisualL = C.create_rectangle(100,68,700,84, fill='lightblue')
 
    
 
