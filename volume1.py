@@ -15,14 +15,17 @@ def volume1Static():
    volumecontrollring = create_circle(900,85,40, "black", 6, C)
    displaybg = C.create_rectangle(50,30,800,140, fill='#4a1500')
    displayoutline =  C.create_rectangle(50,30,800,140,outline ='black', width = 4)
-   displayVUr = C.create_text(80, 66, text="L", fill="blue", font=("Arial", 16))
-   displayVUl = C.create_text(80, 102, text="R", fill="red", font=("Arial", 16))
+   displayVUr = C.create_text(80, 76, text="L", fill="lightblue", font=("Arial", 16))
+   displayVUl = C.create_text(80, 112, text="R", fill="lightblue", font=("Arial", 16))
 
-#def VUdisplay(LevelL,LevelR):
+def volume1aktive():
+   #outburstL = LevelL * 5
+   outburstLvisual = C.create_rectangle(100,68,700,84, fill='lightblue')
 
-    
+   
 
 
 volume1Static()
+volume1aktive()
 C.pack()
 mainloop()

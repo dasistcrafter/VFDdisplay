@@ -5,10 +5,16 @@ from getdataVU import *
 
 #ad menue to select what is shown
 #volume controll
+
+"""
+TODO:
+thred calculate levvels
+
+"""
 volume1Static()
 
 #VU data
-calculate_levels(LevelL, LevelR)
+#calculate_levels(LevelL, LevelR)
 
-print(f"L:{LevelL} R:{LevelR}")
+#print(f"L:{LevelL} R:{LevelR}")
 
