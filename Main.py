@@ -1,13 +1,14 @@
 from tkinter import *
 from volume1 import volume1Static
-
-root = Tk()
-
-C = Canvas(root, bg="gray55",height=200,width=800)
-
-volume1Static(C, root)
+from getdataVU import *
 
 
-C.pack()
-mainloop()
+#ad menue to select what is shown
+#volume controll
+volume1Static()
+
+#VU data
+calculate_levels(LevelL, LevelR)
+
+print(f"L:{LevelL} R:{LevelR}")
 
