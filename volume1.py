@@ -39,9 +39,9 @@ def volume1aktive(LevelL, LevelR):
     global barL, barR
     C.delete("bar")
 
-    num_blocks = 20
-    block_width = 26
-    spacing = 6
+    num_blocks = 25
+    block_width = 25
+    spacing = 3
     
 
     blocksL = int(min(LevelL[0] * 0.34, num_blocks))
@@ -72,7 +72,7 @@ def volume1aktive(LevelL, LevelR):
     
 #volumewheel
 def on_mousewheel(event,volume):
-    #Volume = add realtime system volume here
+    #Volume = add realtime system volume here for the gui wheel
     amount = event.delta
 
     if amount > 1:
