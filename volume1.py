@@ -21,8 +21,8 @@ def volume1Static():
     C.create_rectangle(50, 30, 800, 140, outline='black', width=4)
     C.create_text(80, 76, text="L", fill="lightblue", font=("Arial", 16))
     C.create_text(80, 112, text="R", fill="lightblue", font=("Arial", 16))
-    for i in range(20):#change with num_blocks to match volume1aktive if wanted
-        if i > 12: #change so that it maches with the red blocks
+    for i in range(21):#change with num_blocks to match volume1aktive if wanted
+        if i > 14: #change so that it maches with the red blocks
             C.create_text(114+i*32, 57, text=i, fill="red", font=("Arial", 16)) #chage i*block_width+spacing to match volume1aktive if wanted
         else:
             C.create_text(114+i*32, 57, text=i, fill="lightblue", font=("Arial", 16)) #chage i*block_width+spacing to match volume1aktive if wanted
@@ -46,7 +46,7 @@ def volume1aktive(LevelL, LevelR):
     for i in range(blocksL):
         x0 = 100 + i * (block_width + spacing)
         x1 = x0 + block_width
-        if x1 > 620:
+        if x1 > 550:
             colorL = "red"
         else:
             colorL = "lightblue"
@@ -56,7 +56,7 @@ def volume1aktive(LevelL, LevelR):
     for i in range(blocksR):
         x0 = 100 + i * (block_width + spacing)
         x1 = x0 + block_width
-        if x1 > 620:
+        if x1 > 550:
             colorR = "red"
         else:
             colorR = "lightblue"
@@ -64,7 +64,7 @@ def volume1aktive(LevelL, LevelR):
 
 def update_gui(LevelL, LevelR):
     volume1aktive(LevelL, LevelR)
-    root.after(140, update_gui, LevelL, LevelR)
+    root.after(60, update_gui, LevelL, LevelR)
 
 def start_gui(LevelL, LevelR):
     volume1Static()
