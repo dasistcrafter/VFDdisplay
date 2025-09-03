@@ -1,11 +1,17 @@
 from tkinter import *
+import subprocess
 
 root = Tk()
 C = Canvas(root, bg="gray55", height=200, width=1000)
 C.pack()
 
+
+Volume = 0
+
 barL = None
 barR = None
+
+
 
 def create_circle(x, y, r, o, w, C):
     x0 = x - r
@@ -62,9 +68,51 @@ def volume1aktive(LevelL, LevelR):
             colorR = "lightblue"
         C.create_rectangle(x0, 104, x1, 120, fill=colorR, tags="bar")
 
+
+    
+#volumewheel
+def on_mousewheel(event,volume):
+    #Volume = add realtime system volume here
+    amount = event.delta
+
+    if amount > 1:
+        subprocess.run(["pactl", "set-sink-volume", "@DEFAULT_SINK@", "-1%"], check=True)
+    else:
+        subprocess.run(["pactl", "set-sink-volume", "@DEFAULT_SINK@", "+1%"], check=True)
+
+#root.bind("<MouseWheel>", on_mousewheel)  #Windows/macOS (support may be addet later on)
+root.bind("<Button-4>", lambda e: on_mousewheel(type("Event", (object,), {"delta": 120}),Volume))   # Linux scroll up
+root.bind("<Button-5>", lambda e: on_mousewheel(type("Event", (object,), {"delta": -120}),Volume))  # Linux scroll down
+
+
+
+
+#add sensetivtiy regulation:
+"""
+def on_mousewheel(event):
+    amount = event.delta
+
+    LevelL[0] = max(0, min(100, LevelL[0] + (1 if amount > 0 else -1) * 2))
+    LevelR[0] = max(0, min(100, LevelR[0] + (1 if amount > 0 else -1) * 2))
+    print(f"Level L: {LevelL[0]}, Level R: {LevelR[0]}")
+
+root.bind("<MouseWheel>", on_mousewheel)  # Windows/macOS
+root.bind("<Button-4>", lambda e: on_mousewheel(type("Event", (object,), {"delta": 120})))   # Linux scroll up
+root.bind("<Button-5>", lambda e: on_mousewheel(type("Event", (object,), {"delta": -120})))  # Linux scroll down
+
+C = Canvas(root, bg="gray55", height=200, width=1000)
+C.pack()
+
+barL = None
+barR = None
+
+LevelL = [0]
+LevelR = [0]
+"""
 def update_gui(LevelL, LevelR):
     volume1aktive(LevelL, LevelR)
     root.after(60, update_gui, LevelL, LevelR)
+
 
 def start_gui(LevelL, LevelR):
     volume1Static()
